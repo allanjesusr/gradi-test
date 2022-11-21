@@ -1,6 +1,6 @@
 # Getting Started
 
-This project was created with [Vite]
+This project was created with [Vite]('https://vitejs.dev/')
 
 ## Available Scripts
 
