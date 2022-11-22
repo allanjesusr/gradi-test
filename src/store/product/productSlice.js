@@ -2,8 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     product: {},
-    quantity: 0,
-    isLoading: false
+    quantity: 1,
+    isLoading: false,
+    totalPay: 28500
 }
 
 export const productSlice = createSlice({
@@ -17,11 +18,19 @@ export const productSlice = createSlice({
             state.isLoading = false;
             state.product = action.payload.product;
         },
-        increment: (state) => {
-            state.quantity += 1
+        increment: (state, { payload }) => {
+            state.quantity += 1;
+            state.totalPay = state.quantity * payload.price
+
         },
-        decrement: (state) => {
-            state.quantity -= 1
+        decrement: (state, { payload }) => {
+            if (state.quantity === 1) {
+                state.quantity = 1;
+            } else {
+                state.quantity -= 1;
+                state.totalPay = state.quantity * payload.price
+            }
+
         },
     }
 })
